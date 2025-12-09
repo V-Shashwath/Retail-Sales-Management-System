@@ -108,7 +108,7 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <div className="app-header-content">
-          <h1>Sales Management System</h1>
+          <h1>Retail Sales Management System</h1>
           <p>Manage and analyze your retail sales data with advanced filtering and search capabilities</p>
         </div>
       </header>
@@ -152,8 +152,9 @@ export default function App() {
 
               {!loading && !error && sales.length === 0 && (
                 <div className="empty-state">
-                  <p>📭 No sales data found</p>
-                  <p className="empty-state-subtitle">Try adjusting your search or filters</p>
+                    <img  src="/empty.png" alt="No data" className="empty-state-image"/>
+                    <p>No sales data found</p>
+                    <p className="empty-state-subtitle">Try adjusting your search or filters</p>
                 </div>
               )}
 
@@ -183,7 +184,7 @@ export default function App() {
       </main>
 
       <footer className="app-footer">
-        <p>© 2025 Sales Management System. All rights reserved.</p>
+        <p>© 2025 Retail Sales Management System. All rights reserved.</p>
       </footer>
     </div>
   )

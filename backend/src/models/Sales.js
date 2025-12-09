@@ -1,144 +1,139 @@
 const mongoose = require('mongoose');
 
 const SalesSchema = new mongoose.Schema({
+
   // Customer Fields
   customerId: {
     type: String,
-    required: true,
-    index: true,
+    default: "",
+    index: true
   },
   customerName: {
     type: String,
-    required: true,
-    index: 'text',
+    default: "",
+    index: 'text'
   },
   phoneNumber: {
     type: String,
-    required: true,
-    index: 'text',
+    default: "",
+    index: 'text'
   },
   gender: {
     type: String,
-    enum: ['Male', 'Female', 'Other'],
-    index: true,
+    trim: true,
+    lowercase: true,
+    default: "other",     // instead of enum
+    index: true
   },
   age: {
     type: Number,
+    default: 0,
     min: 0,
-    max: 150,
-    index: true,
+    max: 150
   },
   customerRegion: {
     type: String,
-    required: true,
-    index: true,
+    default: "",
+    index: true
   },
   customerType: {
     type: String,
-    enum: ['Retail', 'Wholesale', 'Premium'],
+    trim: true,
+    lowercase: true,
+    default: "retail"     // no enum
   },
 
   // Product Fields
   productId: {
     type: String,
-    required: true,
-    index: true,
+    default: "",
+    index: true
   },
   productName: {
     type: String,
-    required: true,
+    default: ""
   },
   brand: {
     type: String,
-    required: true,
+    default: ""
   },
   productCategory: {
     type: String,
-    required: true,
-    index: true,
+    default: "",
+    index: true
   },
-  tags: [{
-    type: String,
-    index: true,
-  }],
+  tags: {
+    type: [String],
+    default: [],
+    index: true
+  },
 
   // Sales Fields
   quantity: {
     type: Number,
-    required: true,
-    min: 1,
-    index: true,
+    default: 0
   },
   pricePerUnit: {
     type: Number,
-    required: true,
-    min: 0,
+    default: 0
   },
   discountPercentage: {
     type: Number,
-    default: 0,
-    min: 0,
-    max: 100,
+    default: 0
   },
   totalAmount: {
     type: Number,
-    required: true,
-    min: 0,
+    default: 0
   },
   finalAmount: {
     type: Number,
-    required: true,
-    min: 0,
+    default: 0
   },
 
   // Operational Fields
   date: {
     type: Date,
-    required: true,
-    index: true,
+    default: null,
+    index: true
   },
   paymentMethod: {
     type: String,
-    enum: ['Credit Card', 'Debit Card', 'UPI', 'Cash', 'Net Banking'],
-    index: true,
+    trim: true,
+    lowercase: true,
+    default: "credit card" // no enum
   },
   orderStatus: {
     type: String,
-    enum: ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'],
-    index: true,
+    trim: true,
+    lowercase: true,
+    default: "pending"     // no enum
   },
   deliveryType: {
     type: String,
-    enum: ['Standard', 'Express', 'Overnight'],
+    trim: true,
+    lowercase: true,
+    default: "standard"    // no enum
   },
   storeId: {
     type: String,
-    required: true,
-    index: true,
+    default: "",
+    index: true
   },
   storeLocation: {
     type: String,
-    required: true,
+    default: ""
   },
   salespersonId: {
     type: String,
-    required: true,
-    index: true,
+    default: "",
+    index: true
   },
   employeeName: {
     type: String,
-    required: true,
+    default: ""
   },
 
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
+}, { timestamps: true });
 
 // Indexes
 SalesSchema.index({ customerName: 'text', phoneNumber: 'text' });

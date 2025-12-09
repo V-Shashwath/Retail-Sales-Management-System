@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "seed": "node scripts/seedData.js"
+    "import:csv": "node scripts/importCSV.js"
   },
   "keywords": ["sales", "management", "api", "nodejs"],
   "author": "",
